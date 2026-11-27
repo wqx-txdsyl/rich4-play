@@ -77,6 +77,27 @@ def main():
                 candidates = [e for e in files.values() if e['size'] == item['size']]
                 if len(candidates) == 1:
                     files[key] = candidates[0]
+        block_checks = json.loads((ROOT / 'resource-blocks.json').read_text())
+        diagnostics = []
+        for item in baseline['files']:
+            if not item['name'].lower().endswith(('.mkf', '.mid')):
+                continue
+            entry = files[item['name'].lower()]
+            iso.source.seek(entry['offset'])
+            raw = iso.source.read(entry['size'])
+            decoded = bytearray(len(raw))
+            for offset in range(256):
+                table = bytes((((((value ^ 0xd5) >> 2) | ((value ^ 0xd5) << 6)) - offset) & 255) for value in range(256))
+                decoded[offset::256] = raw[offset::256].translate(table)
+            if hashlib.sha256(decoded).hexdigest() == item['sha256']:
+                (GAME / item['name']).write_bytes(decoded)
+                continue
+            mismatches = [i for i, h in enumerate(block_checks['files'][item['name']]) if hashlib.sha256(decoded[i*1048576:(i+1)*1048576]).hexdigest() != h]
+            samples = {offset: {'iso': raw[int(offset):int(offset)+32].hex(), 'decoded': decoded[int(offset):int(offset)+32].hex(), 'local': value} for offset, value in block_checks['samples'][item['name']].items() if decoded[int(offset):int(offset)+32].hex() != value}
+            diagnostics.append({'name': item['name'], 'blocks': mismatches, 'samples': samples})
+        if diagnostics:
+            print('DECODE_DIAGNOSTICS=' + json.dumps(diagnostics), flush=True)
+            raise ValueError('Installer decoding differences need inspection')
         print('ISO root entries: ' + json.dumps({k: e['size'] for k, e in files.items()}), flush=True)
         for item in baseline['files']:
             name = item['name']
@@ -119,6 +140,14 @@ def main():
     download(prepare.RUNTIME_URL, runtime, prepare.RUNTIME_SHA256, expected_size=122244710)
     with zipfile.ZipFile(runtime) as release:
         print('Runtime script entries: ' + json.dumps([n for n in release.namelist() if n.endswith('boxedwine.js')]), flush=True)
+    font = CACHE / 'NotoSansCJKtc-Regular.otf'
+    font_url = 'https://raw.githubusercontent.com/notofonts/noto-cjk/f8d157532fbfaeda587e826d4cd5b21a49186f7c/Sans/OTF/TraditionalChinese/NotoSansCJKtc-Regular.otf'
+    if not font.is_file():
+        with urllib.request.urlopen(font_url, timeout=90) as source:
+            font.write_bytes(source.read())
+    font_bytes = font.read_bytes()
+    if len(font_bytes) != 16435884 or hashlib.sha1(b'blob ' + str(len(font_bytes)).encode() + b'\0' + font_bytes).hexdigest() != 'f9376bae1d421520f73a3c6c9d50b22f89548301':
+        raise ValueError('Pinned official CJK font verification failed')
     subprocess.run([sys.executable, str(ROOT / 'prepare.py'), '--runtime-archive', str(runtime)], check=True)
     subprocess.run([sys.executable, str(ROOT / 'verify.py')], check=True)
     report = {'original_non_video_files_verified': len(baseline['files']) - 21, 'cutscenes_restored': len(complete),

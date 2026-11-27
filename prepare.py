@@ -117,6 +117,10 @@ def stage_runtime(manifest: dict, supplied_archive: str | None) -> None:
             temp = CACHE / filename
             temp.write_bytes(release.read(member))
             if filename.endswith('.zip'):
+                font = CACHE / 'NotoSansCJKtc-Regular.otf'
+                if font.is_file():
+                    with zipfile.ZipFile(temp, 'a', compression=zipfile.ZIP_DEFLATED) as rootfs:
+                        rootfs.write(font, 'home/username/.wine/drive_c/windows/Fonts/NotoSansCJKtc-Regular.otf')
                 manifest['runtime'] = split_file(temp, 'wine11')
             elif temp.stat().st_size > 24 * 1024 * 1024:
                 raise RuntimeError(f'{filename} exceeds the static hosting per-file limit; split runtime loading is required')
@@ -138,6 +142,10 @@ def main() -> None:
         if source.is_file():
             shutil.copy2(source, DIST / source.name)
     shutil.copy2(HERE / 'vendor' / 'boxedwine-shell.upstream.js', DIST / 'boxedwine-shell.js')
+    licenses = DIST / 'licenses'
+    licenses.mkdir(exist_ok=True)
+    for source in (HERE / 'vendor').glob('*LICENSE*'):
+        shutil.copy2(source, licenses / source.name)
     manifest = prepare_game()
     inventory = json.loads((HERE / 'original-inventory.json').read_text(encoding='utf-8'))
     print(json.dumps({'originalFiles': inventory['original_file_count'], 'archiveBytes': manifest['game']['size'],
