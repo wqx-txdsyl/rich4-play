@@ -102,21 +102,29 @@ ui('launch').onclick = async () => {
   if (runtimeStarted) return;
   ui('launch').disabled = true;
   try {
+    Rich4Midi.unlock();
     const files = { 'rich4.zip': await loadChunks(resourceManifest.game,'原版游戏'),
                     'boxedwine.zip': await loadChunks(resourceManifest.runtime,'兼容环境') };
     await script('boxedwine-shell.js');
     // Keep the upstream shell API and the original program. Only resource delivery changes.
-    Config.urlParams = 'app=rich4&p=Rich4.exe&resolution=800x600&bpp=16&disableHideCursor=true&env=%22LANG:zh_TW.UTF-8%22';
+    Config.urlParams = 'app=rich4&p=Rich4.exe&resolution=800x600&bpp=16&disableHideCursor=true';
     Config.storageMode = STORAGE_INDEXED_DB;
     Config.persist_d_drive = true;
+    const upstreamParams = getEmulatorParams;
+    getEmulatorParams = function() {
+      return ['-env','LANG=zh_TW.UTF-8','-env','WINEDEBUG=+winmm', ...upstreamParams()];
+    };
     loadFile = function(prefix, filename, callback) {
       if (!files[filename]) { fail('兼容环境请求了未知文件：' + filename); return; }
       callback(files[filename]);
     };
     Module.locateFile = name => 'runtime/' + name;
     const originalPrint = Module.print;
-    Module.print = function(...args) { originalPrint(...args); };
+    Module.print = function(...args) {
+      if (!Rich4Midi.onLog(args.join(' '))) originalPrint(...args);
+    };
     Module.printErr = function(...args) {
+      if (Rich4Midi.onLog(args.join(' '))) return;
       console.error(...args);
       ui('output').value += args.join(' ') + '\n';
     };

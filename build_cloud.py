@@ -86,9 +86,9 @@ def main():
             iso.source.seek(entry['offset'])
             raw = iso.source.read(entry['size'])
             decoded = bytearray(len(raw))
-            for offset in range(256):
+            for offset in range(71):
                 table = bytes((((((value ^ 0xd5) >> 2) | ((value ^ 0xd5) << 6)) - offset) & 255) for value in range(256))
-                decoded[offset::256] = raw[offset::256].translate(table)
+                decoded[offset::71] = raw[offset::71].translate(table)
             if hashlib.sha256(decoded).hexdigest() == item['sha256']:
                 (GAME / item['name']).write_bytes(decoded)
                 continue
@@ -114,9 +114,9 @@ def main():
                     # Original disc installer stores these files with a byte-position transform.
                     # Reverse only that storage format; require exact local SHA-256 afterwards.
                     decoded = bytearray(len(data))
-                    for offset in range(256):
+                    for offset in range(71):
                         table = bytes((((((value ^ 0xd5) >> 2) | ((value ^ 0xd5) << 6)) - offset) & 255) for value in range(256))
-                        decoded[offset::256] = data[offset::256].translate(table)
+                        decoded[offset::71] = data[offset::71].translate(table)
                     data = decoded
                 if hashlib.sha256(data).hexdigest() != item['sha256']:
                     raise ValueError('Original resource hash differs after installer decoding: ' + name)
