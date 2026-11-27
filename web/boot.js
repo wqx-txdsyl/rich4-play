@@ -33,7 +33,9 @@ async function fetchVerifiedChunk(chunk, label) {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 45000);
     try {
-      const response = await fetch(chunk.url, {signal:controller.signal});
+      const resourceUrl = new URL(chunk.url, location.href);
+      resourceUrl.searchParams.set('sha256', chunk.sha256);
+      const response = await fetch(resourceUrl, {signal:controller.signal});
       if (!response.ok) throw new Error('HTTP ' + response.status);
       const bytes = new Uint8Array(await response.arrayBuffer());
       if (bytes.length !== chunk.size || await digest(bytes) !== chunk.sha256) throw new Error('文件校验未通过');
@@ -192,7 +194,7 @@ window.addEventListener('beforeunload', event => {
   if (runtimeStarted) { syncSaves(); event.preventDefault(); event.returnValue = ''; }
 });
 document.addEventListener('visibilitychange', () => { if (document.hidden) syncSaves(); });
-fetch('resources.json').then(response => {
+fetch('resources.json', {cache:'no-store'}).then(response => {
   if (!response.ok) throw new Error('原版资源清单尚未生成');
   return response.json();
 }).then(manifest => {
