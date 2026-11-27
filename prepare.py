@@ -35,7 +35,9 @@ def write_json(path: Path, value) -> None:
 
 
 def split_file(source: Path, stem: str) -> dict:
-    output = DIST / 'assets'
+    package_hash = sha256(source)
+    directory = stem + '-' + package_hash[:16] + '-' + str(CHUNK_SIZE)
+    output = DIST / 'assets' / directory
     output.mkdir(parents=True, exist_ok=True)
     chunks = []
     with source.open('rb') as stream:
@@ -43,10 +45,10 @@ def split_file(source: Path, stem: str) -> dict:
         while block := stream.read(CHUNK_SIZE):
             filename = f'{stem}.{index:03d}.bin'
             (output / filename).write_bytes(block)
-            chunks.append({'url': 'assets/' + filename, 'size': len(block),
+            chunks.append({'url': 'assets/' + directory + '/' + filename, 'size': len(block),
                            'sha256': hashlib.sha256(block).hexdigest()})
             index += 1
-    return {'size': source.stat().st_size, 'sha256': sha256(source), 'chunks': chunks}
+    return {'size': source.stat().st_size, 'sha256': package_hash, 'chunks': chunks}
 
 
 def prepare_game() -> dict:
@@ -141,6 +143,7 @@ def main() -> None:
     for source in (HERE / 'web').iterdir():
         if source.is_file():
             shutil.copy2(source, DIST / source.name)
+    shutil.copy2(DIST / 'index.html', DIST / 'play.html')
     shutil.copy2(HERE / 'vendor' / 'boxedwine-shell.upstream.js', DIST / 'boxedwine-shell.js')
     licenses = DIST / 'licenses'
     licenses.mkdir(exist_ok=True)
