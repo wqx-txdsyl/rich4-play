@@ -1,0 +1,8 @@
+cache/
+original-game/
+dist/
+resources-complete/
+__pycache__/
+*.zip
+!cloud-input.zip
+*.tar.gz

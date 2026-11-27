@@ -1,0 +1,170 @@
+{
+  "checked_on": "2026-11-27",
+  "status": "SOURCE_IDENTIFIED_PARTIAL_DOWNLOAD",
+  "item_url": "https://archive.org/details/Richman4TimeTravel",
+  "iso_url": "https://archive.org/download/Richman4TimeTravel/RICH4_3.iso",
+  "iso_size": 669863936,
+  "iso_sha1_catalog": "2ec181fc79e4f6e170e68309c6c2c370ecbdcb28",
+  "catalog_source": "https://www.shopmsdn.com/detail-大宇-大富翁4+超时空之旅资料片(BIN+CUE)(带音轨)(简体)(繁体)(1998)-2060.html",
+  "inventory_url": "https://archive.org/download/Richman4TimeTravel/RICH4_3.iso/",
+  "files": [
+    {
+      "name": "END01.AVI",
+      "size": 12627790,
+      "url": "https://archive.org/download/Richman4TimeTravel/RICH4_3.iso/END01.AVI",
+      "local_status": "NOT_DOWNLOADED"
+    },
+    {
+      "name": "END02.AVI",
+      "size": 17896484,
+      "url": "https://archive.org/download/Richman4TimeTravel/RICH4_3.iso/END02.AVI",
+      "local_status": "NOT_DOWNLOADED"
+    },
+    {
+      "name": "END03.AVI",
+      "size": 14895210,
+      "url": "https://archive.org/download/Richman4TimeTravel/RICH4_3.iso/END03.AVI",
+      "local_status": "NOT_DOWNLOADED"
+    },
+    {
+      "name": "END04.AVI",
+      "size": 18593230,
+      "url": "https://archive.org/download/Richman4TimeTravel/RICH4_3.iso/END04.AVI",
+      "local_status": "NOT_DOWNLOADED"
+    },
+    {
+      "name": "END05.AVI",
+      "size": 19298596,
+      "url": "https://archive.org/download/Richman4TimeTravel/RICH4_3.iso/END05.AVI",
+      "local_status": "NOT_DOWNLOADED"
+    },
+    {
+      "name": "END06.AVI",
+      "size": 33462286,
+      "url": "https://archive.org/download/Richman4TimeTravel/RICH4_3.iso/END06.AVI",
+      "local_status": "NOT_DOWNLOADED"
+    },
+    {
+      "name": "END07.AVI",
+      "size": 13928118,
+      "url": "https://archive.org/download/Richman4TimeTravel/RICH4_3.iso/END07.AVI",
+      "local_status": "NOT_DOWNLOADED"
+    },
+    {
+      "name": "END08.AVI",
+      "size": 18419018,
+      "url": "https://archive.org/download/Richman4TimeTravel/RICH4_3.iso/END08.AVI",
+      "local_status": "NOT_DOWNLOADED"
+    },
+    {
+      "name": "END09.AVI",
+      "size": 37163574,
+      "url": "https://archive.org/download/Richman4TimeTravel/RICH4_3.iso/END09.AVI",
+      "local_status": "NOT_DOWNLOADED"
+    },
+    {
+      "name": "END10.AVI",
+      "size": 13568178,
+      "url": "https://archive.org/download/Richman4TimeTravel/RICH4_3.iso/END10.AVI",
+      "local_status": "NOT_DOWNLOADED"
+    },
+    {
+      "name": "END11.AVI",
+      "size": 21122530,
+      "url": "https://archive.org/download/Richman4TimeTravel/RICH4_3.iso/END11.AVI",
+      "local_status": "NOT_DOWNLOADED"
+    },
+    {
+      "name": "END12.AVI",
+      "size": 22361822,
+      "url": "https://archive.org/download/Richman4TimeTravel/RICH4_3.iso/END12.AVI",
+      "local_status": "NOT_DOWNLOADED"
+    },
+    {
+      "name": "End.avi",
+      "size": 9132618,
+      "url": "https://archive.org/download/Richman4TimeTravel/RICH4_3.iso/End.avi",
+      "local_status": "NOT_DOWNLOADED"
+    },
+    {
+      "name": "Flychina.avi",
+      "size": 4311702,
+      "url": "https://archive.org/download/Richman4TimeTravel/RICH4_3.iso/Flychina.avi",
+      "local_status": "DOWNLOADED_MEDIA_PROBED",
+      "sha256": "490ab7fffe7e2fefe8877544eec7687295a403c55a45d731c5e636ba123f7059"
+    },
+    {
+      "name": "Flyjp.avi",
+      "size": 4517046,
+      "url": "https://archive.org/download/Richman4TimeTravel/RICH4_3.iso/Flyjp.avi",
+      "local_status": "NOT_DOWNLOADED"
+    },
+    {
+      "name": "Flytw.avi",
+      "size": 4089270,
+      "url": "https://archive.org/download/Richman4TimeTravel/RICH4_3.iso/Flytw.avi",
+      "local_status": "NOT_DOWNLOADED"
+    },
+    {
+      "name": "Flyus.avi",
+      "size": 4100194,
+      "url": "https://archive.org/download/Richman4TimeTravel/RICH4_3.iso/Flyus.avi",
+      "local_status": "NOT_DOWNLOADED"
+    },
+    {
+      "name": "Over.avi",
+      "size": 85408638,
+      "url": "https://archive.org/download/Richman4TimeTravel/RICH4_3.iso/Over.avi",
+      "local_status": "NOT_DOWNLOADED"
+    },
+    {
+      "name": "Start.avi",
+      "size": 17442278,
+      "url": "https://archive.org/download/Richman4TimeTravel/RICH4_3.iso/Start.avi",
+      "local_status": "NOT_DOWNLOADED"
+    },
+    {
+      "name": "Thanks.avi",
+      "size": 42646200,
+      "url": "https://archive.org/download/Richman4TimeTravel/RICH4_3.iso/Thanks.avi",
+      "local_status": "NOT_DOWNLOADED"
+    },
+    {
+      "name": "airplane.avi",
+      "size": 3336364,
+      "url": "https://archive.org/download/Richman4TimeTravel/RICH4_3.iso/airplane.avi",
+      "local_status": "DOWNLOADED_MEDIA_PROBED",
+      "sha256": "31c6b554603977a9f8e4e14f79a96c7efe6c088dcb96f5107dfb8e967b0017f4"
+    }
+  ],
+  "sample_probe": {
+    "file": "Airplane.avi",
+    "size": 3336364,
+    "duration_seconds": 13.314646,
+    "width": 640,
+    "height": 480,
+    "video_codec": "indeo5",
+    "audio_codec": "pcm_s16le"
+  },
+  "notes": [
+    "原盘的7个MKF及25个MID文件大小与本机对应；尚未下载整盘，未完成全部内容哈希比较。",
+    "CheatMaker全动画包的Gofile链接WOLKL7已核实失效；Gamersky原盘下载已关闭。",
+    "Sites仍未发布。",
+    "已下载并检查 Airplane.avi 和 Flychina.avi，其余19个动画尚未补齐。",
+    "重新取得当前Sites项目源码凭据后，源码连接仍被执行环境拒绝；站点版本数仍为0。"
+  ],
+  "additional_sample_probes": [
+    {
+      "file": "Flychina.avi",
+      "size": 4311702,
+      "duration_seconds": 6.666667,
+      "width": 640,
+      "height": 480,
+      "video_codec": "indeo5",
+      "audio_codec": "adpcm_ima_wav"
+    }
+  ],
+  "downloaded_video_count": 2,
+  "deployment_status": "NOT_DEPLOYED",
+  "deployment_blocker": "Restricted execution environment rejects outbound network sockets (WinError 10013); Sites Git source opening also failed with getaddrinfo() thread failed to start."
+}

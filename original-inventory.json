@@ -1,0 +1,316 @@
+{
+  "original_file_count": 60,
+  "original_size": 248151295,
+  "files": [
+    {
+      "name": "Airplane.avi",
+      "size": 5112,
+      "sha256": "da00efc0f0921f344d293c24c597861b3b678a5b379ec15aa4e813d2ccedf6eb"
+    },
+    {
+      "name": "Data.mkf",
+      "size": 54208369,
+      "sha256": "25d53ff40d25fdad9409e3ab6de428533f24dab7fdf8931a55c2cd0654b3598a"
+    },
+    {
+      "name": "earth.ico",
+      "size": 12862,
+      "sha256": "20ee2d296a0e73f7aafb3eff25449f97867d1c76468aebd31cf038221ac9ef63"
+    },
+    {
+      "name": "Effect.mkf",
+      "size": 3897646,
+      "sha256": "4ac71accafd18e4f60badbf59491e7df002dc725cfb24f24dc4f20fd031d0125"
+    },
+    {
+      "name": "End.avi",
+      "size": 5112,
+      "sha256": "da00efc0f0921f344d293c24c597861b3b678a5b379ec15aa4e813d2ccedf6eb"
+    },
+    {
+      "name": "End01.avi",
+      "size": 5112,
+      "sha256": "da00efc0f0921f344d293c24c597861b3b678a5b379ec15aa4e813d2ccedf6eb"
+    },
+    {
+      "name": "End02.avi",
+      "size": 5112,
+      "sha256": "da00efc0f0921f344d293c24c597861b3b678a5b379ec15aa4e813d2ccedf6eb"
+    },
+    {
+      "name": "End03.avi",
+      "size": 5112,
+      "sha256": "da00efc0f0921f344d293c24c597861b3b678a5b379ec15aa4e813d2ccedf6eb"
+    },
+    {
+      "name": "End04.avi",
+      "size": 5112,
+      "sha256": "da00efc0f0921f344d293c24c597861b3b678a5b379ec15aa4e813d2ccedf6eb"
+    },
+    {
+      "name": "End05.avi",
+      "size": 5112,
+      "sha256": "da00efc0f0921f344d293c24c597861b3b678a5b379ec15aa4e813d2ccedf6eb"
+    },
+    {
+      "name": "End06.avi",
+      "size": 5112,
+      "sha256": "da00efc0f0921f344d293c24c597861b3b678a5b379ec15aa4e813d2ccedf6eb"
+    },
+    {
+      "name": "End07.avi",
+      "size": 5112,
+      "sha256": "da00efc0f0921f344d293c24c597861b3b678a5b379ec15aa4e813d2ccedf6eb"
+    },
+    {
+      "name": "End08.avi",
+      "size": 5112,
+      "sha256": "da00efc0f0921f344d293c24c597861b3b678a5b379ec15aa4e813d2ccedf6eb"
+    },
+    {
+      "name": "End09.avi",
+      "size": 5112,
+      "sha256": "da00efc0f0921f344d293c24c597861b3b678a5b379ec15aa4e813d2ccedf6eb"
+    },
+    {
+      "name": "End10.avi",
+      "size": 5112,
+      "sha256": "da00efc0f0921f344d293c24c597861b3b678a5b379ec15aa4e813d2ccedf6eb"
+    },
+    {
+      "name": "End11.avi",
+      "size": 5112,
+      "sha256": "da00efc0f0921f344d293c24c597861b3b678a5b379ec15aa4e813d2ccedf6eb"
+    },
+    {
+      "name": "End12.avi",
+      "size": 5112,
+      "sha256": "da00efc0f0921f344d293c24c597861b3b678a5b379ec15aa4e813d2ccedf6eb"
+    },
+    {
+      "name": "Flychina.avi",
+      "size": 5112,
+      "sha256": "da00efc0f0921f344d293c24c597861b3b678a5b379ec15aa4e813d2ccedf6eb"
+    },
+    {
+      "name": "Flyjp.avi",
+      "size": 5112,
+      "sha256": "da00efc0f0921f344d293c24c597861b3b678a5b379ec15aa4e813d2ccedf6eb"
+    },
+    {
+      "name": "Flytw.avi",
+      "size": 5112,
+      "sha256": "da00efc0f0921f344d293c24c597861b3b678a5b379ec15aa4e813d2ccedf6eb"
+    },
+    {
+      "name": "Flyus.avi",
+      "size": 5112,
+      "sha256": "da00efc0f0921f344d293c24c597861b3b678a5b379ec15aa4e813d2ccedf6eb"
+    },
+    {
+      "name": "help.mkf",
+      "size": 363460,
+      "sha256": "ac8190921b14f25a20c7e4b96843b0de67b6c1b4b1d2030e95c24e79af5fe776"
+    },
+    {
+      "name": "InstOK.wav",
+      "size": 16516,
+      "sha256": "504f559c798490c9795bf383a93ef471ecf7ae8c52803025fdd30bf6eac6b856"
+    },
+    {
+      "name": "InstSel.wav",
+      "size": 6280,
+      "sha256": "dcc71f91feed1da7581b5ddf10d61b5c0dedf7bab285092c3a7202278a097a82"
+    },
+    {
+      "name": "jump.mkf",
+      "size": 28909376,
+      "sha256": "1ae6fe2557d546a2ea96a3b7fffef0f0f0ecba3d2a7b29c514af5a4a65d6499d"
+    },
+    {
+      "name": "map.mkf",
+      "size": 76639739,
+      "sha256": "ffa0f73cb86fa800db4c7665363eb1e6c95cfd0358dbec1bea232cb5cd42393d"
+    },
+    {
+      "name": "Midi.txt",
+      "size": 304,
+      "sha256": "58df659d1cd4c61d2fbb2557bcc295a82f64753ec45ccb081d3e509f4a08f44f"
+    },
+    {
+      "name": "midi01.mid",
+      "size": 8311,
+      "sha256": "75cadf797b177eca1d961f9e4dd21857f1d4501c5b8424a25ed516a00b7a0ae6"
+    },
+    {
+      "name": "midi02.mid",
+      "size": 8518,
+      "sha256": "93b496ea2e1de1aad908d070610f35121a563f83df4b953029ee899aa3dbf69c"
+    },
+    {
+      "name": "midi03.mid",
+      "size": 1668,
+      "sha256": "acc7399947b5e3eda0169a69d0cc13ead388bc9c0d7059e9f9c40a5710c8b85e"
+    },
+    {
+      "name": "midi04.mid",
+      "size": 4080,
+      "sha256": "a580bb56996e711ccc85806a7f686ab286e84ab3ccf3bf9092a09e98cb395399"
+    },
+    {
+      "name": "midi05.mid",
+      "size": 11978,
+      "sha256": "5b0557fe3fcf1953a4f0cbc4046a4dca397d852e093d81a071dfd14de26253c9"
+    },
+    {
+      "name": "midi06.mid",
+      "size": 20149,
+      "sha256": "161c3daaa7c5eda8b893f99edd7d02f799ed64535ccca1dbee2938eab37f5dac"
+    },
+    {
+      "name": "midi07.mid",
+      "size": 11408,
+      "sha256": "89e22d27cf173735038ffd3f6916d38c66113aa4bcbfd62bdf8fa39611425cbf"
+    },
+    {
+      "name": "midi08.mid",
+      "size": 7726,
+      "sha256": "2cfa17ccd196dcff5ed4537005174bd26e0c359fadb244af4ad9f88440caab7d"
+    },
+    {
+      "name": "midi09.mid",
+      "size": 5077,
+      "sha256": "f09752f13e158681545c4b7c90ae1f98e006e4b645e19a1846e9436201049023"
+    },
+    {
+      "name": "midi10.mid",
+      "size": 13852,
+      "sha256": "9f7aa5b958a562fa6f65154003a1d7598e82fa0d55d2fee739b9949c016af931"
+    },
+    {
+      "name": "midi11.mid",
+      "size": 12150,
+      "sha256": "53e2d6c9bc8fa9893a43c008960ba090ff657dcbcdfff79e273a3dd7e7797e46"
+    },
+    {
+      "name": "midi12.mid",
+      "size": 9433,
+      "sha256": "7d26eba66c39cfe807ee62d59f504ebe75ecad73a51efc26419346623e4b7516"
+    },
+    {
+      "name": "midi13.mid",
+      "size": 10365,
+      "sha256": "0467414964d48e09e083776e61f09612f77fe07c534c52b7474b759e6e4ad9d3"
+    },
+    {
+      "name": "midi14-1.mid",
+      "size": 8254,
+      "sha256": "77f9c2395233fdae3862686af929975d60dffc3c6d26dd373cea158691aa4aa2"
+    },
+    {
+      "name": "midi14-2.mid",
+      "size": 3224,
+      "sha256": "bb8d5847574f22e5ef71e84e381e31b906ecd7b7c086855570801f5ea6366346"
+    },
+    {
+      "name": "midi15.mid",
+      "size": 3365,
+      "sha256": "e796fee14a06c8eb58683fb28e14b68fc656ee469a4316ae2be660ccda605536"
+    },
+    {
+      "name": "midi16.mid",
+      "size": 3209,
+      "sha256": "1fadfc7bef14a011e19c52a65d1b6710703242f2562fd6b4ba94cb694f379c6c"
+    },
+    {
+      "name": "Over.avi",
+      "size": 5112,
+      "sha256": "da00efc0f0921f344d293c24c597861b3b678a5b379ec15aa4e813d2ccedf6eb"
+    },
+    {
+      "name": "Panel.mkf",
+      "size": 25901935,
+      "sha256": "2d55a8a9550339a7e97e48940b304c04680265af56995b3c2df132c4b3b6f637"
+    },
+    {
+      "name": "Rich08.mid",
+      "size": 57996,
+      "sha256": "d760e49e2b89f2dea5e842f056e71b00569ee184352e447546dcf4f149628901"
+    },
+    {
+      "name": "Rich16.mid",
+      "size": 65530,
+      "sha256": "2d8f02bcb0966826692f8482ef25d0e4331fc8535d2406a4046853e13f31f17d"
+    },
+    {
+      "name": "Rich17.mid",
+      "size": 37980,
+      "sha256": "8f89b1732387ec11ea5b3837c3304ab24b43be3fdd290c6f4c32be0f5c533f77"
+    },
+    {
+      "name": "Rich18.mid",
+      "size": 34253,
+      "sha256": "dd89f8f57c303ef33f53bcb231ea0c1b47395ac3b0463a78b38d9be50ee1a8f7"
+    },
+    {
+      "name": "Rich19.mid",
+      "size": 52400,
+      "sha256": "ff37bd23254b7471c34c0908be94928216e53feb92f8b3798ca5ec1c25c7cdc2"
+    },
+    {
+      "name": "Rich20.mid",
+      "size": 83581,
+      "sha256": "eb126f05535c8f1b6a9313f4d51715cc5b8ba81020e0862a46d5a653349f15c1"
+    },
+    {
+      "name": "Rich21.mid",
+      "size": 30180,
+      "sha256": "c98918a3d728e6665d5c012d26de890333ed7f85b1fa2ce6f2c540e1ae213294"
+    },
+    {
+      "name": "Rich22.mid",
+      "size": 24821,
+      "sha256": "7502f43e6d2fe252a23bc6b49667d137870a98b476c6b02e544c25a102272b81"
+    },
+    {
+      "name": "RICH4.CFG",
+      "size": 72,
+      "sha256": "3fcd982622b4a8307052115d40eca14e1cc9cf209a5b4facc24bafde22e45f21"
+    },
+    {
+      "name": "Rich4.exe",
+      "size": 602112,
+      "sha256": "5a90aee28ee5f7a5c3ba5cb935c9e55751a529c25fcd91208748a66293569550"
+    },
+    {
+      "name": "Rich4.ico",
+      "size": 2238,
+      "sha256": "b0619550ba3d49cf2ffca285ad479ecbb8a8006346895f7605c18d86f3f6adf8"
+    },
+    {
+      "name": "Speaking.mkf",
+      "size": 56953526,
+      "sha256": "76cac5e543a24891b95e2d6bf87a9775b8e885b6879b660bf34f87943898d540"
+    },
+    {
+      "name": "Start.avi",
+      "size": 5112,
+      "sha256": "da00efc0f0921f344d293c24c597861b3b678a5b379ec15aa4e813d2ccedf6eb"
+    },
+    {
+      "name": "Thanks.avi",
+      "size": 5112,
+      "sha256": "da00efc0f0921f344d293c24c597861b3b678a5b379ec15aa4e813d2ccedf6eb"
+    }
+  ],
+  "observations": {
+    "avi_count": 21,
+    "avi_unique_hashes": 1,
+    "avi_sizes": [
+      5112
+    ],
+    "parity_status": "NOT_VERIFIED",
+    "runtime_status": "NOT_DOWNLOADED",
+    "deployment_status": "NOT_DEPLOYED"
+  }
+}

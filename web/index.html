@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="大富翁4原版浏览器兼容项目；保留原版程序和资源。">
+<title>大富翁4</title>
+<link rel="stylesheet" href="style.css">
+<main>
+  <canvas id="canvas" tabindex="0" aria-label="大富翁4原版游戏画面" oncontextmenu="event.preventDefault()"></canvas>
+  <section id="loading" role="status" aria-live="polite">
+    <div id="spinner" hidden></div>
+    <p class="eyebrow">RICHMAN 4 · 1998</p>
+    <h1>大富翁<span>4</span></h1>
+    <p id="status">正在检查运行环境…</p>
+    <progress id="progress" value="0" max="100" hidden></progress>
+    <p id="detail">原版程序与资源已保留，兼容性验证尚未完成。</p>
+    <button id="launch" disabled>启动原版游戏</button>
+    <details><summary>运行说明</summary>
+      <p>这是原版 Windows 程序的浏览器兼容项目。游戏规则和资源没有重写。原版功能、中文、声音与存档均须完成实机验证后才能确认兼容。</p>
+      <p>当前资源包中的 21 个 AVI 文件内容相同，均为 5,112 字节，不包含各个原版过场的完整内容。</p>
+      <p>MIDI 文件已完整保留。网页兼容层是否能播放原版背景音乐尚未验证。浏览器中的声音效果可能与原系统不同。</p>
+      <p>关闭页面前请在游戏内保存，再导出存档。请使用桌面浏览器。</p>
+    </details>
+  </section>
+  <nav id="toolbar" hidden aria-label="浏览器运行控制">
+    <button id="fullscreen">全屏</button><button id="export">导出存档</button>
+    <label class="file-button">导入存档<input id="import" type="file" accept=".json" hidden></label>
+    <button id="logs">运行日志</button><output id="save-status"></output>
+  </nav>
+  <textarea id="output" hidden readonly aria-label="运行日志"></textarea>
+</main>
+<div hidden id="compatibility-elements">
+  <div id="dropzone"></div><button id="startbtn"></button><span id="sound-checkbox"></span>
+  <input id="soundToggle" type="checkbox" checked><input id="pointerLock" type="checkbox">
+  <input id="showConsole" type="checkbox"><input id="resize" type="checkbox">
+  <button id="uploadbtn"></button><button id="downloadbtn"></button>
+</div>
+<script src="boot.js"></script>
+</html>

@@ -1,0 +1,50 @@
+name: Build and publish Rich4
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: rich4-public-site
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/cache/restore@v4
+        with:
+          path: cache
+          key: rich4-disc-runtime-v1
+      - run: node --check web/boot.js
+      - run: python -u build_cloud.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: build-report
+          path: cloud-build-report.json
+          retention-days: 3
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+      - uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: cache
+          key: rich4-disc-runtime-v1
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@v4
+        id: deployment
