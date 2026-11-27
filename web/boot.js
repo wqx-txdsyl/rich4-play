@@ -3,13 +3,18 @@
 const ui = id => document.getElementById(id);
 let resourceManifest;
 let runtimeStarted = false;
+let runtimeBooted = false;
 let syncBusy = false;
 function fail(message) {
   ui('status').textContent = message;
   ui('status').classList.add('error');
-  ui('detail').textContent = '游戏尚未启动。请完成兼容包准备与运行验证后再发布。';
-  ui('launch').disabled = true;
-  ui('progress').hidden = true;
+  ui('detail').textContent = runtimeBooted ? '运行环境启动失败，请重新加载页面。' : '已校验的资源保存在本机，点击继续即可接着加载。';
+  ui('launch').textContent = runtimeBooted ? '重新加载' : '继续加载';
+  ui('launch').disabled = false;
+  runtimeStarted = false;
+  document.body.classList.remove('running');
+  ui('canvas').classList.remove('visible');
+  ui('toolbar').hidden = true;
 }
 function script(src) {
   return new Promise((resolve, reject) => {
@@ -22,21 +27,61 @@ function script(src) {
 async function digest(bytes) {
   return Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', bytes)), v => v.toString(16).padStart(2, '0')).join('');
 }
+async function fetchVerifiedChunk(chunk, label) {
+  let lastError;
+  for (let attempt = 0; attempt < 5; attempt++) {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 45000);
+    try {
+      const response = await fetch(chunk.url, {signal:controller.signal});
+      if (!response.ok) throw new Error('HTTP ' + response.status);
+      const bytes = new Uint8Array(await response.arrayBuffer());
+      if (bytes.length !== chunk.size || await digest(bytes) !== chunk.sha256) throw new Error('文件校验未通过');
+      return bytes;
+    } catch(error) {
+      lastError = error;
+      ui('detail').textContent = '正在重试资源下载（' + (attempt + 1) + '/5），已完成的部分会保留。';
+      if (attempt < 4) await new Promise(resolve => setTimeout(resolve, 800 * (attempt + 1)));
+    } finally { clearTimeout(timeout); }
+  }
+  throw new Error(label + '下载中断：' + chunk.url + '（' + lastError.message + '）');
+}
 async function loadChunks(item, label) {
   const result = new Uint8Array(item.size);
+  let cache;
+  try { cache = await caches.open('rich4-verified-assets-v1'); } catch(error) { console.warn(error); }
+  let completed = 0;
+  let next = 0;
   let offset = 0;
-  for (const chunk of item.chunks) {
-    ui('status').textContent = '正在加载' + label;
-    const response = await fetch(chunk.url);
-    if (!response.ok) throw new Error(label + '下载失败（' + response.status + '）');
-    const bytes = new Uint8Array(await response.arrayBuffer());
-    if (bytes.length !== chunk.size || await digest(bytes) !== chunk.sha256) throw new Error(label + '文件校验失败');
-    result.set(bytes, offset); offset += bytes.length;
-    ui('progress').hidden = false;
-    ui('progress').value = 100 * offset / item.size;
-    await new Promise(resolve => setTimeout(resolve, 0));
-  }
-  if (offset !== item.size || await digest(result) !== item.sha256) throw new Error(label + '整体校验失败');
+  const chunks = item.chunks.map(chunk => {
+    const entry = {...chunk, offset}; offset += chunk.size; return entry;
+  });
+  const worker = async () => {
+    while (next < chunks.length) {
+      const chunk = chunks[next++];
+      const cacheKey = new URL(chunk.url, location.href);
+      cacheKey.searchParams.set('sha256',chunk.sha256);
+      let cached;
+      try { cached = await cache?.match(cacheKey); } catch(error) { console.warn(error); }
+      let bytes;
+      if (cached) {
+        bytes = new Uint8Array(await cached.arrayBuffer());
+        if (bytes.length !== chunk.size || await digest(bytes) !== chunk.sha256) bytes = undefined;
+      }
+      if (!bytes) {
+        bytes = await fetchVerifiedChunk(chunk, label);
+        try { await cache?.put(cacheKey, new Response(bytes)); } catch(error) { console.warn(error); }
+      }
+      result.set(bytes, chunk.offset);
+      completed += bytes.length;
+      ui('status').textContent = '正在加载' + label + ' · ' + Math.round(completed / 1048576) + ' / ' + Math.round(item.size / 1048576) + ' MB';
+      ui('progress').hidden = false;
+      ui('progress').value = 100 * completed / item.size;
+      await new Promise(resolve => setTimeout(resolve, 0));
+    }
+  };
+  await Promise.all(Array.from({length:Math.min(6,chunks.length)},worker));
+  if (completed !== item.size || offset !== item.size || await digest(result) !== item.sha256) throw new Error(label + '整体校验失败');
   return result;
 }
 function getSaves() {
@@ -99,12 +144,16 @@ ui('import').onchange = async event => {
   event.target.value = '';
 };
 ui('launch').onclick = async () => {
+  if (runtimeBooted) { location.reload(); return; }
   if (runtimeStarted) return;
+  ui('status').classList.remove('error');
+  ui('status').textContent = '正在加载已缓存的资源';
   ui('launch').disabled = true;
   try {
     Rich4Midi.unlock();
     const files = { 'rich4.zip': await loadChunks(resourceManifest.game,'原版游戏'),
                     'boxedwine.zip': await loadChunks(resourceManifest.runtime,'兼容环境') };
+    runtimeBooted = true;
     await script('boxedwine-shell.js');
     // Keep the upstream shell API and the original program. Only resource delivery changes.
     Config.urlParams = 'app=rich4&p=Rich4.exe&resolution=800x600&bpp=16&disableHideCursor=true';

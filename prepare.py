@@ -16,7 +16,7 @@ HERE = Path(__file__).resolve().parent
 GAME = HERE / 'original-game' if (HERE / 'original-game' / 'Rich4.exe').is_file() else HERE.parent
 DIST = HERE / 'dist'
 CACHE = HERE / 'cache'
-CHUNK_SIZE = 16 * 1024 * 1024
+CHUNK_SIZE = 2 * 1024 * 1024
 RUNTIME_URL = 'https://github.com/danoon2/Boxedwine/releases/download/26R1.0/Boxedwine26R1Web.zip'
 RUNTIME_SHA256 = 'ebc634e921f7c65980a7094f3efad84873cede8011eb7dd204446ff1de982945'
 

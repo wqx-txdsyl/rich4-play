@@ -18,6 +18,7 @@ window.Rich4Midi = (() => {
       const packed = parseInt(message[1],16);
       synth.send([packed & 255, (packed >>> 8) & 127, (packed >>> 16) & 127]);
       count++;
+      if (count === 1) console.info('Original game MIDI output connected.');
     }
     if (/trace:winmm:midiOut(?:Reset|Close)\s*\(/i.test(text)) silence();
     return /:trace:winmm:/.test(text);
